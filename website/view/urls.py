@@ -1,6 +1,7 @@
 from django.urls import path
-from . import Controller
+from . import controller
 
 urlpatterns = [
-    path('', Controller.View, name = 'home-page'),
+    path('', controller.View, name = 'home-page'),
+    path('navigate_to_movie', controller.navigate_to_movie, name = 'navigate_to_movie'),
 ]
