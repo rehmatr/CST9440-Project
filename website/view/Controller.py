@@ -27,3 +27,7 @@ def View(request):
 def navigate_to_movie(request):
     response = render(request, 'movie.html')
     return response
+def view_database(request):
+    context = {"listOfMovies":listOfMovies}
+    response = render(request, 'database.html', context)
+    return response
