@@ -20,12 +20,15 @@ for movie in cursorOfMovies:
 
 def View(request):
     context = {"listOfMovies":listOfMovies}
-    #Response provided to user
     response = render(request, 'index.html', context)
     return response
 
 def navigate_to_movie(request):
-    response = render(request, 'movie.html')
+    imdbid = request.GET.get('key', '')
+    movie = mycol.find_one({ "imdbID": imdbid })
+    context = {"movie":movie}
+    response = render(request, 'movie.html', context)
+
     return response
 def view_database(request):
     context = {"listOfMovies":listOfMovies}

@@ -1,0 +1,12 @@
+
+<meta charset="UTF-8">
+{% load static %}
+<link rel="stylesheet" href={% static "website/movie.css" %}>
+<div id="container">
+    <div id="fixed">
+        <div id="title">MOVIE CATALOG</div>
+        <div id="subtitle">{{ movie.Title }}</div>
+    </div>
+
+    <img src="{% static "website/example.jpg" %}" alt="My image">
+</div>
