@@ -4,9 +4,53 @@
 <link rel="stylesheet" href={% static "website/movie.css" %}>
 <div id="container">
     <div id="fixed">
+        <a id="home" href="/">
         <div id="title">MOVIE CATALOG</div>
-        <div id="subtitle">{{ movie.Title }}</div>
+    </a>
     </div>
+    <div id="hero-container">
+        <img id="hero" src={{ movie.Poster }}>
+            <div id="movie">
+                <div>
+                    <img id="primary-movie-poster" src={{ movie.Poster }}/>
+                </div>
 
-    <img src="{% static "website/example.jpg" %}" alt="My image">
+                <div id="primary-movie-vertical">
+                    <div id="primary-movie-title">
+                        {{ movie.Title}}
+                    </div>
+                    <div id="primary-movie-row-1">
+                        <div id="primary-movie-1">
+                            {{ movie.Runtime}} • {{ movie.Rated}}
+                        </div>
+                        <div id="primary-movie-2">
+                            {{ movie.Genre|join:", " }}
+                        </div>
+                        <div id="primary-movie-3">
+                            IMDB {{ movie.imdbRating}} • Metacritic {{ movie.Metascore}}
+                        </div>
+                    </div>
+                    <div id="primary-movie-plot">
+                        {{ movie.Plot }}
+                    </div>
+
+                    <div id="primary-movie-button-container">
+                        <a id="primary-movie-button" href={% static "website/video.mp4" %}>Watch</a>
+                    </div>
+                </div>
+            </div>
+            <div id="similiar">
+                <div id="similiar-title">Movies with similiar genre</div>
+                <div id="similiar-bar">
+                    {% for similiarMovie in similiarMovies %}
+                    <div>
+                        <a class="navigate-to-movie" href="{% url 'navigate_to_movie' %}?key={{ similiarMovie.imdbID }}">
+                            <img class="similiar-movie-poster" src={{ similiarMovie.Poster }}/>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </img>
+    </div>
 </div>
